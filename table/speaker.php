@@ -1,0 +1,35 @@
+<?php
+	$email=$_POST["email"];
+	$name=$_POST["name"];
+	$phone=$_POST["phone"];
+	$profession=$_POST["profession"];
+	$experience=$_POST["experience"];
+	
+	$conn=mysqli_connect("localhost","root","","test");
+	
+	if (mysqli_connect_errno())
+		{
+			echo "<script>alert('Failed to connect to MySQL:  . mysqli_connect_error()');
+						window.location.href='index.html'</script>";
+	    }
+ 
+	$query="insert into speaker(email,name,profession,mobile,experience) values('$email','$email','$phone','$profession','$experience')";
+	$result=mysqli_query($conn,$query);
+	
+	if(!$result)
+	{
+		
+		mysqli_close($conn);
+		echo "<script> alert('You are all ready register with us...!');
+			window.location.href='tables.html'</script>";
+	}
+	else
+	{
+		mysqli_close($conn);
+		
+		echo "<script>alert('Thank You! We will give you a call soon!!');
+		window.location.href='tables.html'</script>";
+
+	}	
+
+?>
